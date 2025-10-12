@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+body { 
+  font-family: sans-serif; 
+  max-width: 600px; 
+  margin: auto; 
+  padding: 2rem; 
+}
+
+input, button { 
+  padding: 0.5rem; 
+  margin-top: 1rem; 
+  width: 100%; 
+}
+
+#chat { 
+  white-space: pre-wrap; 
+  margin-top: 1rem; 
+}
+
+    </style>
+</head>
+<body>
+    <h1>Smart AI Restaurant </h1>
+   <div id="chat"></div>
+<input type="text" id="userInput" placeholder="Ask me: What's on the dinner menu?" />
+<button onclick="sendMessage()">Send</button>
+<script>
+  async function sendMessage() {
+    const input = document.getElementById("userInput").value;
+    const res = await fetch("/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({input})
+    });
+    const data = await res.json();
+    const chatDiv = document.getElementById("chat");
+    chatDiv.innerText += `🧑‍🏫 you ${input}\n🤖 Bot: ${data.output}\n\n`;
+    document.getElementById("userInput").value = "";
+  }
+
+
+</script>
+    
+</body>
+</html>
