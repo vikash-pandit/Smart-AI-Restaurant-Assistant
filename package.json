@@ -3,7 +3,7 @@
   "name": "smart-restaurant-ai-assistant",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "api/server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js",
